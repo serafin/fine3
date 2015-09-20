@@ -41,3 +41,10 @@ class Application extends \Fine\Di\Container
     }
 
 }
+
+
+
+
+app()->repository->article->fetchAll();
+
+app()->module->app->content();

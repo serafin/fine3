@@ -22,9 +22,5 @@ class App
         ));
     }
     
-    protected function _module()
-    {
-        $this->_module = new 
-    }
-    
+
 }

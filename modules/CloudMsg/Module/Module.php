@@ -1,18 +1,14 @@
 <?php
 
-namespace CloudMsg\Module;
+namespace \CloudMsg\Module;
 
 class Module extends \Fine\Container\Container
 {
     
-    public function _app()
-    {
-        return $htis->app = new \CloudMsg\Module\App();
-    }
+    protected $_definitions = array(
+        'app' => '\CloudMsg\Module\App',
+        'entity' => ' \CloudMsg\Module\Entity',
+    );
     
-    public function _entity()
-    {
-        return $htis->entity = new \CloudMsg\Module\Entity();
-    }
-    
+
 }

@@ -1,8 +1,14 @@
-    public function onEntityRepositoryInit()
+<?php
+
+namespace CloudMsg\Module;
+
+class App
+{
+    
+    public function repository()
     {
-        $repository = $this->app->module->Entity->repository;
-        
-        $repository('CloudMsg', function() use ($repository) {
-            return $repository->CloudMsg = new Module\Entity\Repository\CloudMsg();
-        });
+        $repository = app()->repository;
+        $repository('CloudMsg',  '\CloudMsg\Entity\Repository\CloudMsg');
     }
+    
+}
