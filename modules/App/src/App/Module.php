@@ -4,13 +4,22 @@ namespace App;
 
 use \Fine\Event;
 
+/** 
+ * Global helpers
+ */
+ 
+function app()
+{
+    return \Fine\Application\Application::getInstance();
+}
+
+function h($s)
+{
+    return htmlspecialchars($s);
+}
+
 class Module extends \Fine\Controller\ModuleAbstract
 {
-    
-    public function autoload()
-    {
-        $this->app->autoload->addNamespace('App', 'module/App');
-    }
     
     public function init()
     {
@@ -22,7 +31,7 @@ class Module extends \Fine\Controller\ModuleAbstract
             'db' =>  function() use ($app) {
                 $target = $app->target->current;
                 $app->db = \Fine\Db\MySQL\Client::newInstace();
-                $app->module->each()->onAppDbInit();
+                $app->module->each()->app->db();
                 return $app->db;
             },
             

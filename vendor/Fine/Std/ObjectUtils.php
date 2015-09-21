@@ -25,8 +25,12 @@ class ObjectUtils
         if ($mDeadObject instanceof Closure) {
             return $mDeadObject();
         }
+        
+        if (is_object($mDeadObject)) {
+            return $mDeadObject;
+        }
 
-        return null;
+        throw LogicException(''); /** @todo */
     }
 
 }

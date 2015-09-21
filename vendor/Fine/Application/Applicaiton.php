@@ -1,33 +1,30 @@
 <?php
 
-namespace \Fine\Controller;
+namespace \Fine\Application;
 
-class Application extends \Fine\Di\Container
+class Application extends \Fine\Container\Container
 {
 
     public function bootstrap($modules)
     {
 
         // bootstrap modules
-        $this->module
-            ->setModules($modules)
-            ->each()
-                ->setAppication($this)
-                ->bootstrap();
+        $this->module->__invoke($modules);
+        $this->module->each()->app($this);
+        $this->module->each()->bootstrap();
 
         // bootstrap event
         $this->event->run(\Fine\Event\Event::newInstance()->id('application.bootstrap'));
-
     }
 
     /**
      * Get module manager
      *
-     * @return \Fine\Controller\ModuleManager
+     * @return \Fine\Application\ModuleManager
      */
     protected function _module()
     {
-        return $this->module = new \Fine\Controller\ModuleManager();
+        return $this->module = new \Fine\Application\ModuleManager();
     }
 
     /**

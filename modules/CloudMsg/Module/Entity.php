@@ -5,10 +5,9 @@ namespace CloudMsg\Module;
 class App
 {
     
-    public function repository()
+    public function repository($container)
     {
-        $repository = app()->repository;
-        $repository('CloudMsg',  '\CloudMsg\Entity\Repository\CloudMsg');
+        $container['CloudMsg'] = '\CloudMsg\Module\Entity\Repository\CloudMsg';
     }
     
 }
