@@ -9,18 +9,7 @@ Klasa sklada sie z parametrow/wlasciwosci, ktore mozna ustawic i pobrac.
 Z metod(y), ktore wykonuja zadanie, korzystajac z wczesniej przekazanych parametrow/wlasciwosci.
 Takie metody nie posiadaja argumentow.
 Z metod(y), ktore pobieraja wynik lub informuja czy zadanie zostalo wykonane. 
-
-# 2 koncepcje
-1. like zf2
-  + wystarcyz folder przekopiowac i wlacz w glownym configu wlaczyc modul
-  - wydajnosc
-  - skomplikowana konfiguracja kolejnosci
-2. like etc apache gitweb config link/connection/interweaving
-  - instrukcja instalacji, krok po kroku
-  + wydajnosc
-  + prostota 
-  + przjerzstosc
-  + jasna konfiguracja kolejnosci
++ plynny kod
 
 # moduly i rozszerzalne serwisy
 
@@ -70,15 +59,7 @@ TODO lvl 5
 
 ===========
 
-autoload
-bootstrap
-on{ModuleName}{Thing}{EventName}
 
-./Module/{ModuleName}/Module.php(container)
-
-$app->module->CloudMsg->module->Admin->
-$app->module->each()->module->admin->on
-$app->module->each()->module
 
 
 

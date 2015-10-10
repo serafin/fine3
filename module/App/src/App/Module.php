@@ -1,9 +1,5 @@
 <?php
 
-namespace App;
-
-use \Fine\Event;
-
 /** 
  * Global helpers
  */
@@ -18,13 +14,16 @@ function h($s)
     return htmlspecialchars($s);
 }
 
-class Module extends \Fine\Controller\ModuleAbstract
+
+namespace App;
+
+use \Fine\Event;
+
+class Module extends \Fine\Application\ModuleAbstract
 {
     
-    public function init()
+    public function register($app)
     {
-        
-        $app = $this->app;
         
         $app(array(
             
@@ -52,11 +51,6 @@ class Module extends \Fine\Controller\ModuleAbstract
             },
             
             'router' => function() use ($app) {
-                $app->router = new \Fine\Controller\Router();
-                $event = Event::newInstace()->app($app);
-                $app->module->each()->onAppRouterInit($event);
-                $event->conclude();
-                return $app->router;
             },
             
             'target' => function() use ($app) {
@@ -73,12 +67,12 @@ class Module extends \Fine\Controller\ModuleAbstract
             
         ));
         
+        $app->event->on('application.bootstrap', array($this, 'bootstrap'));
+
     }
     
-    public function bootstrap()
+    public function bootstrap(Event $event)
     {
-        $this->app->dispatcher->run();
-        $this->app->response->send();
     }
     
 }

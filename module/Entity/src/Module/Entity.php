@@ -7,7 +7,9 @@ class Entity
     
     public function repository($container)
     {
-        $container['entity'] = '\Entity\Repository\Entity';
+        $container(array(
+            'entity' => '\Entity\Repository\Entity'
+        ));
     }
     
     public function subentity($container)

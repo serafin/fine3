@@ -7,6 +7,4 @@ chdir(dirname(__DIR__));
 require_once __DIR__ . '/vendor/autoload.php';
 
 // bootstrap application
-\Fine\Application\Application::setInstance(new \Fine\Application\Application())->bootstrap(require 'modules/modules.php');
-
-
+\Fine\Application\Application::setInstance(new \Fine\Application\Application())->bootstrap(require 'config/module.php');

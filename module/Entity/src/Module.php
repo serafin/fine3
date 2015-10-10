@@ -4,17 +4,15 @@ namespace Entity;
 
 use \Fine\Di;
 
-class Module extends Container
+class Module extends \Fine\Container\Container
 {
     
     protected $_definitions = array(
         'module' => '\Entity\Module\Module',    
     );
 
-    public function bootstrap()
+    public function register($app)
     {
-        $app = $this->app;
-        
         $app['repository'] = function() use ($app) {
             return $app->repository = $app->module->entity->repository;
         };

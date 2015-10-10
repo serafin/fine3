@@ -10,7 +10,11 @@ class ModuleManager extends \Fine\Container\Container
     public function each()
     {
         if (!$this->_each) {
-            $this->_each = \Fine\Application\ModuleEach($this);
+            $service = array();
+            foreach ($this->_definitions as $name => $definition) {
+                $service[$name] = $this->{$name};
+            }
+            $this->_each = \Fine\Std\DynamicFacade(array('subject' => $service));
         }
         return $this->_each;
     }

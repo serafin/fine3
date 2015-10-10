@@ -5,16 +5,18 @@ namespace \Fine\Application;
 class Application extends \Fine\Container\Container
 {
 
+    /**
+     * Bootstrap application
+     */ 
     public function bootstrap($modules)
     {
 
-        // bootstrap modules
-        $this->module->__invoke($modules);
-        $this->module->each()->app($this);
-        $this->module->each()->bootstrap();
+        // set modules definitions and register them
+        $this->module->__invoke($modules)->each()->register($this);
 
-        // bootstrap event
+        // run application.bootstrap event
         $this->event->run(\Fine\Event\Event::newInstance()->id('application.bootstrap'));
+        
     }
 
     /**
@@ -38,10 +40,3 @@ class Application extends \Fine\Container\Container
     }
 
 }
-
-
-
-
-app()->repository->article->fetchAll();
-
-app()->module->app->content();

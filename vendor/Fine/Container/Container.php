@@ -2,7 +2,7 @@
 
 namespace \Fine\Container;
 
-class Container
+class Container implements \ArrayAccess
 {
 
     /**
@@ -76,6 +76,11 @@ class Container
     {
         $this->$name;
     }
+    
+    public function offsetSet($key, $val)
+    {
+        $this->_definitions[$key] = $val;
+    }    
 
 }
 
