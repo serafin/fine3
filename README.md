@@ -68,4 +68,13 @@ TODO lvl 5
 
 
 
+finef/fine
+finef/emma
+finef/emma-app
+finef/emma-backend
+finef/emma-entity
+finef/emma-cdn
+finef/emma-import
+finef/emma-plugin
+
 
